@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Login Page</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f2f2f2;
+    }
+    
+    .container {
+      width: 300px;
+      margin: 0 auto;
+      margin-top: 100px;
+      background-color: #fff;
+      padding: 20px;
+      border-radius: 5px;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+    }
+    
+    h1 {
+      text-align: center;
+    }
+    
+    input[type="text"],
+    input[type="password"] {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 10px;
+      box-sizing: border-box;
+    }
+    
+    button {
+      width: 100%;
+      padding: 10px;
+      background-color: #333;
+      color: #fff;
+      border: none;
+      border-radius: 3px;
+      cursor: pointer;
+    }
+    
+    button:hover {
+      background-color: #555;
+    }
+    
+    .homepage-link {
+      text-align: center;
+      margin-top: 20px;
+    }
+    
+    .homepage-link a {
+      color: #333;
+      text-decoration: none;
+    }
+  </style>
+</head>
+<body>
+    <form id="login-form">
+  <div class="container">
+        <label for="username">Username:</label>
+        <input type="text" id="username" name="username" required>
+        <label for="password">Password:</label>
+        <input type="password" id="password" name="password" required>
+        <button type="submit">Login</button>
+    <div class="homepage-link">
+        <a href="signup.html">SignUp</a>
+      </div>
+  </div>
+
+
+
+  
+  <script>
+    document.getElementById("login-form").addEventListener("submit", function(event) {
+      event.preventDefault();
+      
+      var username = document.getElementById("username").value;
+      var password = document.getElementById("password").value;
+      
+      // Save login details in local storage
+      localStorage.setItem("username", username);
+      localStorage.setItem("password", password);
+      
+      alert("Login details saved successfully!");
+      
+      // Redirect to home page or any other desired page
+      location.href = "home.html";
+    });
+  </script>
+</body>
+</html>

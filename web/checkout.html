@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Checkout</title>
+  <style>
+    /* ... CSS styles ... */
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Checkout</h1>
+  </header>
+  
+  <main>
+    <div class="cart">
+      <h2>Cart</h2>
+      <ul id="cart-items"></ul>
+    </div>
+    
+    <div class="checkout">
+      <h2>Review and Confirm Your Order</h2>
+      <button onclick="placeOrder()">Place Order</button>
+    </div>
+  </main>
+  
+  <script>
+    function displayCartItems() {
+      var cartItems = JSON.parse(sessionStorage.getItem('cartItems')) || [];
+      var cartItemsList = document.getElementById("cart-items");
+      
+      if (cartItems.length === 0) {
+        cartItemsList.innerHTML = "<li>Your cart is empty.</li>";
+      } else {
+        cartItems.forEach(function(item) {
+          var li = document.createElement("li");
+          li.appendChild(document.createTextNode(item));
+          cartItemsList.appendChild(li);
+        });
+      }
+    }
+    
+    function placeOrder() {
+      var cartItems = JSON.parse(sessionStorage.getItem('cartItems')) || [];
+      
+      if (cartItems.length === 0) {
+        alert("Your cart is empty. Please add items before placing the order.");
+      } else {
+        alert("Order placed successfully!");
+        sessionStorage.removeItem('cartItems');
+        location.href = "home.html"; // Redirect to home page or any other desired page after placing the order
+      }
+    }
+    
+    displayCartItems();
+  </script>
+</body>
+</html>

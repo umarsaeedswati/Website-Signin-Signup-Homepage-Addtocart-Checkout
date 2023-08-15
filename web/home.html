@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Online Store</title>
+  <style>
+    /* ... CSS styles ... */
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Welcome to the Online Store</h1>
+  </header>
+  
+  <main>
+    <div class="item">
+      <img src="item1.jpg" alt="Item 1">
+      <h2>Item 1</h2>
+      <button onclick="addToCart('Item 1')">Add to Cart</button>
+    </div>
+    
+    <div class="item">
+      <img src="item2.jpg" alt="Item 2">
+      <h2>Item 2</h2>
+      <button onclick="addToCart('Item 2')">Add to Cart</button>
+    </div>
+    
+    <div class="item">
+      <img src="item3.jpg" alt="Item 3">
+      <h2>Item 3</h2>
+      <button onclick="addToCart('Item 3')">Add to Cart</button>
+    </div>
+  </main>
+  
+  <div class="cart">
+    <h2>Cart</h2>
+    <ul id="cart-items"></ul>
+    <div class="checkout-link">
+      <a href="checkout.html">Proceed to Checkout</a>
+    </div>
+  </div>
+  
+  <script>
+    function addToCart(itemName) {
+      var cartItems = JSON.parse(sessionStorage.getItem('cartItems')) || [];
+      cartItems.push(itemName);
+      sessionStorage.setItem('cartItems', JSON.stringify(cartItems));
+      
+      var cartItemsList = document.getElementById("cart-items");
+      var li = document.createElement("li");
+      li.appendChild(document.createTextNode(itemName));
+      cartItemsList.appendChild(li);
+    }
+  </script>
+</body>
+</html>
